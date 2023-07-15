@@ -1,27 +1,21 @@
+import React from 'react';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import Navbar from './Navbar';
+import DisplayBooks from './DisplayBooks';
+import Categories from './Categories';
 import '../styles/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit
-          <code>
-            src/App.js
-          </code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="Bookstore">
+    <HashRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<DisplayBooks />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
+      </Routes>
+    </HashRouter>
+  </div>
+);
 
 export default App;
