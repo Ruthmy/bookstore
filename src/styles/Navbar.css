@@ -11,3 +11,17 @@ nav {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4rem 2rem 4rem rgba(0, 0, 0, 0.03);
 }
+
+nav h1 {
+  color: var(--azure-color);
+  font-weight: bold;
+}
+
+ul {
+  display: flex;
+  gap: 20px;
+}
+
+li {
+  list-style: none;
+}
