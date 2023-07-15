@@ -7,9 +7,10 @@
   --font-title: 3rem;
   --font-h3-size: 2rem;
   --font-p-size: 1.6rem;
+  --text-color: #333;
   --azure-color: #0290ff;
   --pale-grey-color: #f5f6fa;
-  --background-color: white;
+  --background-color: #fafafa;
 }
 
 html {
@@ -50,7 +51,6 @@ h1 {
 
 h3 {
   font-size: var(--font-h3-size);
-  text-align: center;
 }
 
 p {
