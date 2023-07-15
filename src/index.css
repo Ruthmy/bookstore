@@ -1,8 +1,15 @@
 /* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
   /* Set your variables here */
   --font: 'Montserrat', sans-serif;
+  --font-title: 3rem;
+  --font-h3-size: 2rem;
+  --font-p-size: 1.6rem;
+  --azure-color: #0290ff;
+  --pale-grey-color: #f5f6fa;
+  --background-color: white;
 }
 
 html {
@@ -20,4 +27,38 @@ html {
   padding: 0;
 
   /* outline: 1px solid red !important; */
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--pale-grey-color);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  font-size: var(--font-title);
+  font-weight: bold;
+}
+
+h3 {
+  font-size: var(--font-h3-size);
+  text-align: center;
+}
+
+p {
+  font-size: var(--font-p-size);
+}
+
+a {
+  text-decoration: none;
+  font-size: var(--font-p-size);
+  font-weight: bold;
 }
