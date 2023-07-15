@@ -1,0 +1,8 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1.5rem;
+}
