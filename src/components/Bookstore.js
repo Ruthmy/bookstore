@@ -3,9 +3,9 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import DisplayBooks from './DisplayBooks';
 import Categories from './Categories';
-import '../styles/App.css';
+import '../styles/Bookstore.css';
 
-const App = () => (
+const Bookstore = () => (
   <div className="Bookstore">
     <HashRouter>
       <Navbar />
@@ -18,4 +18,4 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default Bookstore;
