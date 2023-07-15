@@ -12,7 +12,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<DisplayBooks />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<h3>Not Found</h3>} />
       </Routes>
     </HashRouter>
   </div>
