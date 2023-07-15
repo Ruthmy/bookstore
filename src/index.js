@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './components/App';
 import './index.css';
-import Bookstore from './components/Bookstore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Bookstore />
+    <App />
   </React.StrictMode>,
 );
