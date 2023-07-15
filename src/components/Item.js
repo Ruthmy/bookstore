@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/Item.css';
 
 const Item = ({ item }) => {
   const { title, author, category } = item;
