@@ -1,0 +1,19 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  height: 20%;
+  border: 1px solid #e8e8e8;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 2rem 1rem rgba(204, 204, 204, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 10px #ccc;
+}
