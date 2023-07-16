@@ -11,3 +11,9 @@
   color: var(--text-color);
   background-color: var(--background-color);
 }
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .DisplayBooks {
+    flex-wrap: nowrap;
+  }
+}
