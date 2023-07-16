@@ -8,3 +8,9 @@
   -webkit-box-shadow: 40px 40px 113px -24px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 40px 40px 113px -24px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .Bookstore {
+    overflow: auto;
+  }
+}
