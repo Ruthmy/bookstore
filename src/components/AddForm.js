@@ -7,13 +7,13 @@ const AddForm = () => (
     <form>
       <div className="form-group">
         <label htmlFor="title">
-          Title
+          <span>Title</span>
           <input type="text" className="form-control" id="title" />
         </label>
       </div>
       <div className="form-group">
         <label htmlFor="author">
-          Author
+          <span>Author</span>
           <input type="text" className="form-control" id="author" />
         </label>
       </div>
