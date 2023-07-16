@@ -17,3 +17,11 @@
   transform: scale(1.01);
   box-shadow: 0 0 10px #ccc;
 }
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .item {
+    flex-direction: column;
+    justify-content: center;
+    height: 35%;
+  }
+}
