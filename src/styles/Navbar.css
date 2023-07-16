@@ -25,3 +25,23 @@ ul {
 li {
   list-style: none;
 }
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 18rem;
+    padding: 0;
+  }
+
+  nav h1 {
+    padding: 1rem 0;
+  }
+
+  ul {
+    flex-direction: column;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+}
