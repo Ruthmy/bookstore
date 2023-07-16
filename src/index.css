@@ -62,3 +62,7 @@ a {
   font-size: var(--font-p-size);
   font-weight: bold;
 }
+
+span {
+  font-size: var(--font-p-size);
+}
