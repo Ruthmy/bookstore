@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h1><b>Math Magicians</b></h1>
+  <h1><b>Bookstore</b></h1>
 </div>
 
 ---
@@ -33,7 +33,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-#  Math Magicians <a name="about-project"></a>
+#  Bookstore <a name="about-project"></a>
 
 **"Bookstore"** is a React and Redux website that displays a list of books and allows you to add and remove books from that list.. It is a Single Page App (SPA) that allows users to:
  - Display a list of books.
