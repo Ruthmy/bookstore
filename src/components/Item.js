@@ -1,16 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import '../styles/Item.css';
+import { deleteBook } from '../redux/books/booksSlice';
 
 const Item = ({ item }) => {
   const { title, author, category } = item;
+  const dispatch = useDispatch();
   return (
     <div className="item">
       <div className="item-info">
         <p className="category">{category}</p>
         <h3 className="title">{title}</h3>
         <p className="author">{author}</p>
-        <button className="btn btn-remove" type="button">Remove</button>
+        <button
+          className="btn btn-remove"
+          onClick={() => dispatch(deleteBook())}
+          type="button"
+        >
+          Remove
+        </button>
       </div>
       <div className="item-progress">
         <div className="oval" />
