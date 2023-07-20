@@ -1,16 +1,20 @@
 import React from 'react';
-import Item from './Item';
-import BooksList from '../bd/BooksList';
-import '../styles/DisplayBooks.css';
+import { useSelector } from 'react-redux';
 import AddForm from './AddForm';
+import Item from './Item';
+import '../styles/DisplayBooks.css';
 
-const DisplayBooks = () => (
-  <div className="DisplayBooks">
-    {BooksList.map((book) => (
-      <Item key={book.item_id} item={book} />
-    ))}
-    <AddForm />
-  </div>
-);
+const DisplayBooks = () => {
+  // Get books from Redux store:
+  const booksList = useSelector((state) => state.books);
+  return (
+    <div className="DisplayBooks">
+      {booksList.books.map((book) => (
+        <Item key={book.item_id} item={book} />
+      ))}
+      <AddForm />
+    </div>
+  );
+};
 
 export default DisplayBooks;
