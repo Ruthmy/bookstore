@@ -9,7 +9,7 @@ const DisplayBooks = () => {
   const booksList = useSelector((state) => state.books);
   return (
     <div className="DisplayBooks">
-      {booksList.map((book) => (
+      {booksList.books.map((book) => (
         <Item key={book.item_id} item={book} />
       ))}
       <AddForm />
