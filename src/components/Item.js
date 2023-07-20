@@ -5,17 +5,22 @@ import { deleteBook } from '../redux/books/booksSlice';
 import '../styles/Item.css';
 
 const Item = ({ item }) => {
-  const { title, author, category } = item;
   const dispatch = useDispatch();
   return (
     <div className="item">
       <div className="item-info">
-        <p className="category">{category}</p>
-        <h3 className="title">{title}</h3>
-        <p className="author">{author}</p>
+        <p className="category">
+          {item.category}
+        </p>
+        <h3 className="title">
+          {item.title}
+        </h3>
+        <p className="author">
+          {item.author}
+        </p>
         <button
           className="btn btn-remove"
-          onClick={() => dispatch(deleteBook())}
+          onClick={() => dispatch(deleteBook(item.item_id))}
           type="button"
         >
           Remove
@@ -40,6 +45,7 @@ const Item = ({ item }) => {
 
 Item.propTypes = {
   item: PropTypes.shape({
+    item_id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
