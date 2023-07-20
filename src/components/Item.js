@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import '../styles/Item.css';
 import { deleteBook } from '../redux/books/booksSlice';
+import '../styles/Item.css';
 
 const Item = ({ item }) => {
   const { title, author, category } = item;
