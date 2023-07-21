@@ -24,6 +24,19 @@ export const addBookAsync = createAsyncThunk(
         if (response.data === 'Created') {
           thunkAPI.dispatch(fetchBooks());
         }
+      }).catch((error) => thunkAPI.rejectWithValue(error.response.data));
+  },
+);
+
+// Create an async thunk to delete a book
+export const deleteBookAsync = createAsyncThunk(
+  'books/deleteBookAsync',
+  async (bookId, thunkAPI) => {
+    axios.delete(`${bookstoreAPI.baseUrl}${bookstoreAPI.appId}/books/${bookId}`)
+      .then((response) => {
+        if (response.data === 'The book was deleted successfully!') {
+          thunkAPI.dispatch(fetchBooks());
+        }
         return response.data;
       }).catch((error) => thunkAPI.rejectWithValue(error.response.data));
   },
@@ -56,19 +69,27 @@ export const booksSlice = createSlice({
     builder.addCase(addBookAsync.pending, (state) => {
       state.status = 'loading';
     });
-    builder.addCase(addBookAsync.fulfilled, (state, action) => {
+    builder.addCase(addBookAsync.fulfilled, (state) => {
       state.status = 'succeeded';
-      state.books = [...state.books, action.payload]; // Add the new book to the state
     });
     builder.addCase(addBookAsync.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    });
+    // Delete a book
+    builder.addCase(deleteBookAsync.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(deleteBookAsync.fulfilled, (state) => {
+      state.status = 'succeeded';
+    });
+    builder.addCase(deleteBookAsync.rejected, (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
     });
   },
 
 });
-
-export const { deleteBook } = booksSlice.actions;
 
 // Export the full reducer
 export default booksSlice.reducer;
