@@ -12,6 +12,10 @@
   background-color: var(--background-color);
 }
 
+.empty {
+  padding: 7rem 0.5rem;
+}
+
 @media (max-width: 680px), screen and (orientation: portrait) {
   .DisplayBooks {
     flex-wrap: nowrap;
