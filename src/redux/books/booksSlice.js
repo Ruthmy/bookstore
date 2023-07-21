@@ -1,26 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { bookstoreAPI } from '../../API/bookstoreAPI';
+
+// Create an async thunk to fetch the books
+export const fetchBooks = createAsyncThunk(
+  'books/fetchBooks',
+  async () => {
+    const response = await axios.get(`${bookstoreAPI.baseUrl}${bookstoreAPI.appId}/books/`);
+    return response.data;
+  },
+);
+
+// The following are selectors to query the Redux store
+export const getAllBooks = (state) => state.books.books; // If fulfilled, the books will be here
+export const getBooksError = (state) => state.books.error; // If rejected, the error will be here
+export const getBooksStatus = (state) => state.books.status; // The status of the fetch request
 
 const initialState = {
-  books: [
-    {
-      item_id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: [],
+  status: 'idle',
+  error: '',
 };
 
 export const booksSlice = createSlice({
@@ -37,6 +36,20 @@ export const booksSlice = createSlice({
       state.books.splice(index, 1);
     },
   },
+  extraReducers(builder) {
+    builder.addCase(fetchBooks.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.books = state.books.concat(action.payload);
+    });
+    builder.addCase(fetchBooks.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    });
+  },
+
 });
 
 export const { addBook, deleteBook } = booksSlice.actions;
