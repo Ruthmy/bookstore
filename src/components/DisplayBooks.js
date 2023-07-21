@@ -9,16 +9,17 @@ const DisplayBooks = () => {
   const booksList = useSelector((state) => state.books);
   return (
     <div className="DisplayBooks">
-      {booksList.books.map((book) => {
-        // Get the index of the book
-        let index = 0;
-        [index] = Object.keys(book);
-        // Destructure the book object
-        let item = {};
-        [item] = Object.values(book).flat(1);
+      {booksList.books.length === 0
+        ? <h3 className="empty">There are no books in the store, Add a book to start tracking!</h3>
+        : Object.values(booksList.books).map((book, index) => {
+          // Get the index of the book
+          const bookIndex = Object.keys(booksList.books)[index];
+          // Destructure the book object
+          let item = {};
+          [item] = Object.values(book).flat(1);
 
-        return <Item key={index} id={index} item={item} />;
-      })}
+          return <Item key={bookIndex} id={bookIndex} item={item} />;
+        })}
       <AddForm />
     </div>
   );
