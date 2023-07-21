@@ -8,11 +8,11 @@ const AddForm = () => {
   const [authorInput, setAuthorInput] = React.useState('');
   const dispatch = useDispatch();
 
-  const onFormSubmit = async (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     try {
       // If dispatch is successful, the book will be added and form fields will be reset.
-      await dispatch(
+      dispatch(
         addBookAsync(
           {
             item_id: `item${Math.floor(Math.random() * 1000)}`,
