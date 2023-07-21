@@ -6,15 +6,28 @@ import { bookstoreAPI } from '../../API/bookstoreAPI';
 export const fetchBooks = createAsyncThunk(
   'books/fetchBooks',
   async () => {
-    const response = await axios.get(`${bookstoreAPI.baseUrl}${bookstoreAPI.appId}/books/`);
-    return response.data;
+    try {
+      const response = await axios.get(`${bookstoreAPI.baseUrl}${bookstoreAPI.appId}/books/`);
+      return response.data;
+    } catch (error) {
+      throw error.response;
+    }
   },
 );
 
-// The following are selectors to query the Redux store
-export const getAllBooks = (state) => state.books.books; // If fulfilled, the books will be here
-export const getBooksError = (state) => state.books.error; // If rejected, the error will be here
-export const getBooksStatus = (state) => state.books.status; // The status of the fetch request
+// Create an async thunk to add a book
+export const addBookAsync = createAsyncThunk(
+  'books/addBookAsync',
+  async (newBookData, thunkAPI) => {
+    axios.post(`${bookstoreAPI.baseUrl}${bookstoreAPI.appId}/books/`, newBookData)
+      .then((response) => {
+        if (response.data === 'Created') {
+          thunkAPI.dispatch(fetchBooks());
+        }
+        return response.data;
+      }).catch((error) => thunkAPI.rejectWithValue(error.response.data));
+  },
+);
 
 const initialState = {
   books: [],
@@ -25,26 +38,29 @@ const initialState = {
 export const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    addBook: (state, action) => {
-      state.books = [...state.books, action.payload];
-    },
-    deleteBook: (state, action) => {
-      const index = state.books.findIndex(
-        (book) => book.item_id === action.payload,
-      );
-      state.books.splice(index, 1);
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
+    // Get all books
     builder.addCase(fetchBooks.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(fetchBooks.fulfilled, (state, action) => {
       state.status = 'succeeded';
-      state.books = state.books.concat(action.payload);
+      state.books = action.payload;
     });
     builder.addCase(fetchBooks.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    });
+    // Add a book
+    builder.addCase(addBookAsync.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(addBookAsync.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.books = [...state.books, action.payload]; // Add the new book to the state
+    });
+    builder.addCase(addBookAsync.rejected, (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
     });
@@ -52,7 +68,7 @@ export const booksSlice = createSlice({
 
 });
 
-export const { addBook, deleteBook } = booksSlice.actions;
+export const { deleteBook } = booksSlice.actions;
 
 // Export the full reducer
 export default booksSlice.reducer;
