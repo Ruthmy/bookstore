@@ -9,9 +9,16 @@ const DisplayBooks = () => {
   const booksList = useSelector((state) => state.books);
   return (
     <div className="DisplayBooks">
-      {booksList.books.map((book) => (
-        <Item key={book.item_id} item={book} />
-      ))}
+      {booksList.books.map((book) => {
+        // Get the index of the book
+        let index = 0;
+        [index] = Object.keys(book);
+        // Destructure the book object
+        let item = {};
+        [item] = Object.values(book).flat(1);
+
+        return <Item key={index} id={index} item={item} />;
+      })}
       <AddForm />
     </div>
   );
