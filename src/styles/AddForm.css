@@ -21,6 +21,15 @@ form {
   gap: 1rem;
 }
 
+/* Display error */
+
+#error {
+  font-weight: 500;
+  color: var(--error);
+  padding-top: 1rem;
+  align-self: flex-end;
+}
+
 @media (max-width: 680px), screen and (orientation: portrait) {
   .AddForm {
     align-items: center;
