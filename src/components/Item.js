@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteBook } from '../redux/books/booksSlice';
+import { deleteBookAsync } from '../redux/books/booksSlice';
 import '../styles/Item.css';
 
 const Item = ({ id, item }) => {
@@ -20,7 +20,7 @@ const Item = ({ id, item }) => {
         </p>
         <button
           className="btn btn-remove"
-          onClick={() => dispatch(deleteBook(id))}
+          onClick={() => dispatch(deleteBookAsync(id))}
           type="button"
         >
           Remove
