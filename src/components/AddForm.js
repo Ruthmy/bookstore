@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { addBookAsync } from '../redux/books/booksSlice';
 import '../styles/AddForm.css';
 
 const AddForm = () => {
@@ -9,20 +8,30 @@ const AddForm = () => {
   const [authorInput, setAuthorInput] = React.useState('');
   const dispatch = useDispatch();
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
-
-    dispatch(
-      addBook({
-        item_id: `item${Math.floor(Math.random() * 1000)}`,
-        title: titleInput,
-        author: authorInput,
-        category: 'Fiction',
-      }),
-    );
-
-    setTitleInput('');
-    setAuthorInput('');
+    try {
+      // If dispatch is successful, the book will be added and form fields will be reset.
+      await dispatch(
+        addBookAsync(
+          {
+            item_id: `item${Math.floor(Math.random() * 1000)}`,
+            title: titleInput,
+            author: authorInput,
+            category: 'Fiction',
+          },
+        ),
+      );
+      setTitleInput('');
+      setAuthorInput('');
+    } catch (error) {
+      // Handle the error, show a message in de div id error.
+      const errorDiv = document.getElementById('error');
+      errorDiv.innerHTML = `<p>Error adding book: ${error.message}</p>`;
+      setTimeout(() => {
+        errorDiv.innerHTML = '';
+      }, 3000);
+    }
   };
 
   return (
@@ -62,6 +71,7 @@ const AddForm = () => {
           Add Book
         </button>
       </form>
+      <div id="error" />
     </div>
   );
 };
