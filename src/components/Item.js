@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteBook } from '../redux/books/booksSlice';
+import { deleteBookAsync } from '../redux/books/booksSlice';
 import '../styles/Item.css';
 
-const Item = ({ item }) => {
+const Item = ({ id, item }) => {
   const dispatch = useDispatch();
   return (
     <div className="item">
@@ -20,7 +20,7 @@ const Item = ({ item }) => {
         </p>
         <button
           className="btn btn-remove"
-          onClick={() => dispatch(deleteBook(item.item_id))}
+          onClick={() => dispatch(deleteBookAsync(id))}
           type="button"
         >
           Remove
@@ -44,10 +44,10 @@ const Item = ({ item }) => {
 };
 
 Item.propTypes = {
+  id: PropTypes.string.isRequired,
   item: PropTypes.shape({
-    item_id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
   }).isRequired,
 };
