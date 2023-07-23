@@ -1,17 +1,26 @@
 /* Global Styles */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
   /* Set your variables here */
-  --font: 'Montserrat', sans-serif;
+  --font-one: 'Montserrat', sans-serif;
+  --font-two: 'Roboto Slab', serif;
   --font-title: 3rem;
-  --font-h3-size: 2rem;
-  --font-p-size: 1.6rem;
+  --font-p-current-size: 1rem;
+  --font-p-size: 1.4rem;
+  --font-h3-add-size: 2rem;
+  --font-h3-size: 2.5rem;
+  --font-percent-size: 3rem;
   --error: #ff6163;
-  --text-color: #333;
+  --text-color: #121212;
   --azure-color: #0290ff;
+  --medium-blue: #307bbe;
+  --blue-color: #4386bf;
   --pale-grey-color: #f5f6fa;
+  --very-light-grey: #e8e8e8;
+  --select-grey: #c7c7c7;
+  --light-grey-color: #888;
   --background-color: #fafafa;
+  --item-background-color: #fff;
 }
 
 html {
@@ -31,10 +40,7 @@ html {
   /* outline: 1px solid red !important; */
 }
 
-body {
-  font-family: var(--font);
-  background-color: var(--pale-grey-color);
-}
+body { background-color: var(--pale-grey-color); }
 
 #root {
   display: flex;
@@ -45,25 +51,86 @@ body {
   height: 100vh;
 }
 
-h1 {
-  font-size: var(--font-title);
-  font-weight: bold;
-}
+h1 { font-size: var(--font-title); }
 
-h3 {
-  font-size: var(--font-h3-size);
-}
+h3 { font-size: var(--font-h3-size); }
 
-p {
-  font-size: var(--font-p-size);
-}
+p { font-size: var(--font-p-size); }
+
+p.current { font-size: var(--font-p-current-size); }
 
 a {
   text-decoration: none;
   font-size: var(--font-p-size);
+}
+
+h1,
+p.category,
+h3,
+button.btn-add {
   font-weight: bold;
 }
 
-span {
-  font-size: var(--font-p-size);
+.AddForm h3 { font-size: var(--font-h3-add-size); }
+
+p.author,
+p.current,
+p.chapter,
+p.completed,
+button,
+a,
+input {
+  font-weight: normal;
+}
+
+h1,
+.AddForm h3,
+a,
+p.category,
+p.percent,
+p.completed,
+select,
+input {
+  font-family: var(--font-one);
+}
+
+h3.title,
+p.author,
+p.current,
+p.chapter,
+button {
+  font-family: var(--font-two);
+}
+
+p.completed,
+p.category,
+p.current,
+.AddForm h3 {
+  color: var(--light-grey-color);
+}
+
+input::placeholder,
+select {
+  color: var(--light-grey-color);
+}
+
+p.author,
+button {
+  color: var(--blue-color);
+}
+
+p.percent {
+  font-size: var(--font-percent-size);
+}
+
+p.percent,
+p.chapter {
+  color: var(--text-color);
+}
+
+button { cursor: pointer; }
+
+button.btn-update,
+button.btn-add {
+  color: white;
 }
