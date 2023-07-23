@@ -2,12 +2,12 @@ const routes = [];
 
 routes.push({
   to: '/',
-  text: 'HomePage',
+  text: 'BOOKS',
 });
 
 routes.push({
   to: '/categories',
-  text: 'Categories',
+  text: 'CATEGORIES',
 });
 
 export default routes;
