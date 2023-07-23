@@ -105,10 +105,7 @@ button {
 p.completed,
 p.category,
 p.current,
-.AddForm h3 {
-  color: var(--light-grey-color);
-}
-
+.AddForm h3,
 input::placeholder,
 select {
   color: var(--light-grey-color);
