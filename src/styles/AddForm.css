@@ -93,6 +93,7 @@ select:focus { outline: var(--select-grey) solid 2px; }
 @media (max-width: 680px), screen and (orientation: portrait) {
   .AddForm {
     align-items: center;
+    justify-content: space-between;
   }
 
   form {
@@ -100,15 +101,9 @@ select:focus { outline: var(--select-grey) solid 2px; }
     align-items: center;
   }
 
-  .form-group label {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  .form-group:nth-child(1),
+  .form-group:nth-child(2) {
     width: 100%;
-  }
-
-  input.form-control {
-    width: 80%;
   }
 
   button {
