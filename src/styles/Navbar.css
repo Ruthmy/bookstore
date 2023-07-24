@@ -32,9 +32,7 @@ ul {
   gap: 3rem;
 }
 
-li {
-  list-style: none;
-}
+li { list-style: none; }
 
 div.profile {
   height: 4rem;
@@ -49,16 +47,24 @@ div.profile {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 18rem;
+    height: 20rem;
     padding: 0;
+    gap: 0;
   }
 
-  nav h1 {
-    padding: 1rem 0;
+  nav div {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
+
+  nav h1 { padding: 1rem 0; }
 
   ul {
     flex-direction: column;
+    align-items: center;
     padding: 0.5rem 0;
     gap: 0.5rem;
   }
