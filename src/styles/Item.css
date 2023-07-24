@@ -82,14 +82,7 @@
   border: none;
   background-color: var(--azure-color);
   transition: all 0.3s ease-in-out;
-}
-
-.btn-update {
   height: 3rem;
-}
-
-.btn-add {
-  height: 3.5rem;
 }
 
 .line-btn {
@@ -114,9 +107,46 @@
 
 @media (max-width: 680px),
   screen and (orientation: portrait) {
+  .line {
+    display: none;
+  }
+
   .item {
     flex-direction: column;
     justify-content: center;
-    height: 35%;
+    gap: 1rem;
+    height: 30rem;
+    padding: 2rem;
+  }
+
+  .item-progress,
+  .item-info,
+  .item-chapter {
+    width: 100%;
+    padding: 0;
+  }
+
+  .item-chapter {
+    justify-content: flex-start;
+  }
+
+  .item-progress {
+    height: 30%;
+    gap: 2rem;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+
+  .btn-update {
+    width: 100%;
+  }
+
+  .item-chapter div {
+    width: 100%;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    align-items: baseline;
+    height: 2rem;
   }
 }
