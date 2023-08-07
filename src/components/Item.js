@@ -18,24 +18,38 @@ const Item = ({ id, item }) => {
         <p className="author">
           {item.author}
         </p>
-        <button
-          className="btn btn-remove"
-          onClick={() => dispatch(deleteBookAsync(id))}
-          type="button"
-        >
-          Remove
-        </button>
-      </div>
-      <div className="item-progress">
-        <div className="oval" />
-        <div className="progress">
-          <p className="percent">64%</p>
+        <div className="item-links">
+          <button className="btn-comments" type="button">
+            Comments
+          </button>
+          <div className="line-btn" />
+          <button
+            className="btn-remove"
+            onClick={() => dispatch(deleteBookAsync(id))}
+            type="button"
+          >
+            Remove
+          </button>
+          <div className="line-btn" />
+          <button className="btn-edit" type="button">
+            Edit
+          </button>
         </div>
       </div>
+      <div className="item-progress">
+        <div className="progress-bar" />
+        <div>
+          <p className="percent">64%</p>
+          <p className="completed">Completed</p>
+        </div>
+        <div className="line" />
+      </div>
       <div className="item-chapter">
-        <p className="current">Current Chapter</p>
-        <p className="chapter">Chapter 17</p>
-        <button className="btn btn-update" type="button">
+        <div>
+          <p className="current">CURRENT CHAPTER</p>
+          <p className="chapter">Chapter 17</p>
+        </div>
+        <button className="btn-update" type="button">
           UPDATE PROGRESS
         </button>
       </div>

@@ -2,9 +2,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 4rem;
   width: 90vw;
   height: 8rem;
-  padding: 0 3rem;
+  padding: 0 4rem;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -12,18 +13,33 @@ nav {
   box-shadow: 0 4rem 2rem 4rem rgba(0, 0, 0, 0.03);
 }
 
+nav div {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 nav h1 {
+  width: auto;
   color: var(--azure-color);
   font-weight: bold;
 }
 
 ul {
+  padding-left: 3rem;
   display: flex;
-  gap: 20px;
+  gap: 3rem;
 }
 
-li {
-  list-style: none;
+li { list-style: none; }
+
+div.profile {
+  height: 4rem;
+  width: 4rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../assets/user-icon.svg);
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
@@ -31,16 +47,24 @@ li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 18rem;
+    height: 20rem;
     padding: 0;
+    gap: 0;
   }
 
-  nav h1 {
-    padding: 1rem 0;
+  nav div {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
+
+  nav h1 { padding: 1rem 0; }
 
   ul {
     flex-direction: column;
+    align-items: center;
     padding: 0.5rem 0;
     gap: 0.5rem;
   }

@@ -36,27 +36,26 @@ const AddForm = () => {
 
   return (
     <div className="AddForm">
+      <div className="AddForm-line" />
       <h3>ADD NEW BOOK</h3>
       <form onSubmit={onFormSubmit}>
         <div className="form-group">
           <label htmlFor="title">
-            <span>Title</span>
             <input
               type="text"
-              className="form-control"
+              className="form-control input-title"
+              placeholder="Book title"
               id="title"
               value={titleInput}
               onChange={(event) => setTitleInput(event.target.value)}
               required
             />
           </label>
-        </div>
-        <div className="form-group">
           <label htmlFor="author">
-            <span>Author</span>
             <input
               type="text"
-              className="form-control"
+              className="form-control input-author"
+              placeholder="Book author"
               id="author"
               value={authorInput}
               onChange={(event) => setAuthorInput(event.target.value)}
@@ -64,11 +63,33 @@ const AddForm = () => {
             />
           </label>
         </div>
+        <div className="form-group">
+          <label htmlFor="category">
+            <select
+              className="form-control"
+              id="category"
+              required
+            >
+              <option value="Fiction">Fiction</option>
+              <option value="Nonfiction">Nonfiction</option>
+              <option value="Romance">Romance</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Horror">Horror</option>
+              <option value="Children">Children</option>
+              <option value="History">History</option>
+              <option value="Poetry">Poetry</option>
+              <option value="Biography">Biography</option>
+              <option value="Science">Science</option>
+            </select>
+          </label>
+        </div>
         <button
           type="submit"
-          className="btn btn-add"
+          className="btn-add"
         >
-          Add Book
+          ADD BOOK
         </button>
       </form>
       <div id="error" />
